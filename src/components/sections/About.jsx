@@ -7,7 +7,8 @@ import {
   FaFilePdf,
   FaChevronDown,
   FaGraduationCap,
-  FaLaptopCode
+  FaLaptopCode,
+  FaBriefcase  // Adicione esta linha
 } from "react-icons/fa";
 import {
   SiJavascript,
@@ -45,22 +46,55 @@ export const About = () => {
     title: 'Courses',
     icon: <FaGraduationCap className="text-yellow-400 text-lg sm:text-xl mr-2" />,
     items: [
-      { name: 'Advanced React Development', file: '/portfolio/assets/PDFs/Courses/react-advanced.pdf' },
-      { name: 'Node.js Masterclass', file: '/portfolio/assets/PDFs/Courses/nodejs-masterclass.pdf' },
-      { name: 'Full Stack Web Development', file: '/portfolio/assets/PDFs/Courses/fullstack-dev.pdf' },
+      { name: 'Full Stack Development JavaScript', file: '/portfolio/assets/PDFs/Courses/JavaScript_do_basico_ao_avancado_com_node.pdf' },
+      { name: 'Cisco Networking Basics', file: '/portfolio/assets/PDFs/Courses/Networking_Basics_Badge.pdf' },
     ]
   },
+  
   {
     id: 'workshops',
     title: 'Workshops',
     icon: <FaLaptopCode className="text-green-400 text-lg sm:text-xl mr-2" />,
     items: [
-      { name: 'Docker for Developers', file: '/portfolio/assets/PDFs/Workshops/docker-workshop.pdf' },
-      { name: 'API Design Best Practices', file: '/portfolio/assets/PDFs/Workshops/api-design.pdf' },
-      { name: 'Frontend Performance Optimization', file: '/portfolio/assets/PDFs/Workshops/frontend-perf.pdf' },
+      { name: 'Desenvolvimento Web Laravel 5', file: '/portfolio/assets/PDFs/Workshops/Oficina_de_Desenvolvimento_Web_Laravel_5.pdf' },
+      { name: 'Aplicações Web Frontend Interativas com React', file: '/portfolio/assets/PDFs/Workshops/Oficina2_Aplicações_Web_Front_End_Interativas_Com_React.pdf' },
+      { name: 'Backend Construindo Componentes Web Java EE', file: '/portfolio/assets/PDFs/Workshops/Oficina2_Backend_Construindo_Componentes_Web_Java_EE.pdf' },
+      { name: 'Manipulacao de Dados com Python', file: '/portfolio/assets/PDFs/Workshops/Oficina5_Manipulacao_de_Dados_com_Python.pdf' },
+      { name: 'Introducao ao esenvolvimento BackEnd com Python', file: '/portfolio/assets/PDFs/Workshops/Seminarios4_Introducao_ao_Desenvolvimento_BackEnd_com_Python.pdf'},
+      { name: 'Dev Start', file: '/portfolio/assets/PDFs/Workshops/Certificado_Dev_Start.pdf' },
+      { name: 'BIRT', file: '/portfolio/assets/PDFs/Workshops/Certificado_BIRT.pdf' },
+      { name: 'BPM ECM Intermediate', file: '/portfolio/assets/PDFs/Workshops/Certificado_BPM_ECM_Intermediate.pdf' },
+      { name: 'Fluig Express', file: '/portfolio/assets/PDFs/Workshops/Certificado_Fluig_Express.pdf' },
+      { name: 'Gestão de Portais', file: '/portfolio/assets/PDFs/Workshops/Certificado_Gestao_de_Portais.pdf' },
+      { name: 'Gestão de Processos Essentials', file: '/portfolio/assets/PDFs/Workshops/Certificado_Gestao_de_Processos_Essentials.pdf' }
+      
     ]
   }
 ];
+
+  // Dados para a seção de experiência profissional
+  const companiesData = [
+    {
+      id: 'companies',
+      title: 'Companies',
+      icon: <FaBriefcase className="text-blue-400 text-lg sm:text-xl mr-2" />,
+      items: [
+        {
+          name: 'ABC Corp',
+          position: 'Software Engineer',
+          period: '2020 - Present',
+          description: 'Developed and maintained microservices for cloud-based applications.'
+        },
+        {
+          name: 'DEF Startups',
+          position: 'Intern',
+          period: '2019',
+          description: 'Assisted in building front-end components and integration REST APIs'
+        }
+        // Adicione mais empresas conforme necessário
+      ]
+    }
+  ];
 
   // Selecionar o array de tecnologias com base na aba ativa
   const technologies = activeTab === 'frontend' ? frontendTechnologies : backendTechnologies;
@@ -247,8 +281,8 @@ export const About = () => {
                         <div className="p-2 sm:p-3 bg-blue-500/5">
                           <ul className="space-y-1 sm:space-y-2">
                             {section.items.map((item, index) => (
-                              <li key={index} className="flex items-start sm:items-center">
-                                <FaFilePdf className="text-red-400 mr-2 mt-0.5 sm:mt-0 flex-shrink-0 text-xs sm:text-sm" />
+                              <li key={index} className="flex items-center">
+                                <FaFilePdf className="text-red-400 mr-2 flex-shrink-0 text-xs sm:text-sm" />
                                 <a 
                                   href={item.file} 
                                   target="_blank" 
@@ -270,25 +304,41 @@ export const About = () => {
                 
             <div className="p-4 sm:p-6 rounded-xl border-white/10 border hover:-translate-y-1 transition-all">
               <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4"> 💼 Work Experience </h3>
-              <div className="space-y-3 sm:space-y-4 text-gray-300 text-xs sm:text-sm">
-                <div>
-                  <h4 className="font-semibold text-sm sm:text-base">
-                    Software Engineer at ABC Corp (2020 - Present)
-                  </h4>
-                  <p>
-                    Developed and maintained microservices for cloud-based
-                    applications.
-                  </p>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-sm sm:text-base">
-                    Intern at DEF Startups (2019)
-                  </h4>
-                  <p>
-                    Assisted in building front-end components and integration
-                    REST APIs
-                  </p>
-                </div>
+              
+              <div className="space-y-2 sm:space-y-3">
+                {companiesData.map((section) => (
+                  <div key={section.id} className="border border-white/10 rounded-lg overflow-hidden">
+                    <button 
+                      onClick={() => toggleSection(section.id)}
+                      className="w-full p-2 sm:p-3 flex items-center justify-between bg-blue-500/10 hover:bg-blue-500/20 transition-all"
+                    >
+                      <div className="flex items-center">
+                        {section.icon}
+                        <span className="font-medium text-xs sm:text-sm">{section.title}</span>
+                      </div>
+                      <FaChevronDown 
+                        className={`text-blue-400 text-sm sm:text-base transition-transform duration-300 ${
+                          expandedSection === section.id ? 'transform rotate-180' : ''
+                        }`} 
+                      />
+                    </button>
+                    
+                    {expandedSection === section.id && (
+                      <div className="p-2 sm:p-3 bg-blue-500/5">
+                        <ul className="space-y-3 sm:space-y-4">
+                          {section.items.map((item, index) => (
+                            <li key={index} className="text-gray-300 text-xs sm:text-sm">
+                              <h4 className="font-semibold text-sm sm:text-base">
+                                {item.position} at {item.name} ({item.period})
+                              </h4>
+                              <p>{item.description}</p>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                ))}
               </div>
             </div>
           </div>
