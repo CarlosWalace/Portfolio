@@ -1,3 +1,4 @@
+import "./i18n"; // <-- Adicione esta linha antes de qualquer componente
 import { useState } from "react";
 import "./App.css";
 import { LoadingScreen } from "./components/LoadingScreen";

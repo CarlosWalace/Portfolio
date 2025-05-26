@@ -1,5 +1,6 @@
 import { RevealOnScroll } from "../RevealOnScroll";
 import { useState } from "react";
+import { useTranslation } from 'react-i18next';
 import {
   FaReact,
   FaVuejs,
@@ -21,6 +22,7 @@ import {
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 export const About = () => {
+  const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState('frontend');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [expandedSection, setExpandedSection] = useState(null);
@@ -78,15 +80,15 @@ export const About = () => {
     {
       id: 'company1',
       title: 'HEINEKEN',
-      icon: <FaBriefcase className="text-blue-400 text-lg sm:text-xl mr-2" />,
+      icon: <FaBriefcase className="text-green-400 text-lg sm:text-xl mr-2" />,
       position: 'Trainee',
       period: '2021 - 2022',
       description: (
         <>
-          <p className="mt-2">Additional responsibilities included:</p>
-          <ul className="list-disc list-inside mt-1">
-            <li>Data analysis and organization in SAP.</li>
-            <li>Administrative support using Excel.</li>
+          <p className="mt-2">{t("Additional responsibilities included:")}</p>
+          <ul>
+            <li>{t("Data analysis and organization in SAP.")}</li>
+            <li>{t("Administrative support using Excel.")}</li>
           </ul>
         </>
       )
@@ -94,23 +96,15 @@ export const About = () => {
     {
       id: 'company2',
       title: 'Mineração Curimbaba',
-      icon: <FaBriefcase className="text-blue-400 text-lg sm:text-xl mr-2" />,
+      icon: <FaBriefcase className="text-green-400 text-lg sm:text-xl mr-2" />,
       position: 'Trainee',
       period: '2022 – 2023',
       description: (
         <>
           <ul className="list-disc list-inside mt-1">
-            <li>Development and maintenance of legacy systems using JavaScript and jQuery on the TOTVS Fluig enterprise management platform.
-              I worked with a focus on BPM (Business Process Management), modeling, automating, and managing business processes, as well as ECM (Enterprise Content Management), handling document management, version control, and approval workflows.</li>
-            <li>Key Tasks:
-              Development of customized forms
-              Creation and maintenance of workflows (approval flows)
-              Report generation using BIRT
-              Data manipulation with Oracle SQL, including specific queries to populate Excel-based dashboards
-            </li>
-            <li>
-              Data manipulation using Oracle SQL, including specific queries to populate Excel-based dashboards.
-            </li>
+            <li>{t("CurimbabaDescription")}</li>
+            <li>{t("CurimbabaKeyTasks")}</li>
+            <li>{t("CurimbabaDataManipulation")}</li>
           </ul>
         </>
       )
@@ -118,14 +112,14 @@ export const About = () => {
     {
       id: 'company3',
       title: 'Telemidia',
-      icon: <FaBriefcase className="text-blue-400 text-lg sm:text-xl mr-2" />,
+      icon: <FaBriefcase className="text-green-400 text-lg sm:text-xl mr-2" />,
       position: 'Junior',
       period: '2023 – ...',
       description: (
         <>
           <ul className="list-disc list-inside mt-1">
-            <li>Technical support and troubleshooting for network-related issues</li>
-            <li>Network inspection and identification of physical faults</li>
+            <li>{t("TelemidiaSupport")}</li>
+            <li>{t("TelemidiaInspection")}</li>
           </ul>
         </>
       )
@@ -195,38 +189,38 @@ export const About = () => {
     >
       <RevealOnScroll>
         <div className="max-w-3xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent text-center">
-            About Me
+          <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 bg-gradient-to-r from-green-500 to-cyan-400 bg-clip-text text-transparent text-center">
+            {t("About Me")}
           </h2>
 
-          <div className="rounded-xl p-4 sm:p-8 border-white/10 border hover:-translate-y-1 transition-all text-center">
+          <div className="glass p-6 rounded-xl border border-purple-500 hover:-translate-y-1 hover:border-purple-300 transition-all">
             <p className="text-sm sm:text-base text-gray-300 mb-4 sm:mb-6">
-              Developer with experience in building full stack web applications.
+              {t("DeveloperExperience")}
             </p>
 
             {/* Carrossel controlável de tecnologias com abas */}
             <div className="mt-6 sm:mt-8 mb-6 sm:mb-8">
-              <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-center">My Tech Stack</h3>
+              <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-center">{t("TechStack")}</h3>
 
               {/* Abas para alternar entre frontend e backend */}
               <div className="flex justify-center mb-4 sm:mb-6">
                 <button
                   onClick={() => changeTab('frontend')}
-                  className={`px-3 sm:px-4 py-1 sm:py-2 text-xs sm:text-sm rounded-l-lg transition-all ${activeTab === 'frontend'
-                    ? 'bg-blue-500 text-white'
-                    : 'bg-blue-500/20 text-blue-400 hover:bg-blue-500/30'
+                  className={`px-3 sm:px-4 py-1 sm:py-2 text-xs sm:text-sm rounded-l-lg transition-all border border-green-500/30 ${activeTab === 'frontend'
+                    ? 'bg-green-500 text-white'
+                    : 'bg-green-500/20 text-green-400 hover:bg-green-500/30'
                     }`}
                 >
-                  Frontend
+                  {t("Frontend")}
                 </button>
                 <button
                   onClick={() => changeTab('backend')}
-                  className={`px-3 sm:px-4 py-1 sm:py-2 text-xs sm:text-sm rounded-r-lg transition-all ${activeTab === 'backend'
-                    ? 'bg-blue-500 text-white'
-                    : 'bg-blue-500/20 text-blue-400 hover:bg-blue-500/30'
+                  className={`px-3 sm:px-4 py-1 sm:py-2 text-xs sm:text-sm rounded-r-lg transition-all border border-green-500/30 ${activeTab === 'backend'
+                    ? 'bg-green-500 text-white'
+                    : 'bg-green-500/20 text-green-400 hover:bg-green-500/30'
                     }`}
                 >
-                  Backend
+                  {t("Backend")}
                 </button>
               </div>
 
@@ -236,10 +230,10 @@ export const About = () => {
                   {technologies.length > itemsPerPage && (
                     <button
                       onClick={prevSlide}
-                      className="absolute left-0 z-10 bg-blue-500/20 hover:bg-blue-500/30 p-1 sm:p-2 rounded-full transition-all transform -translate-y-1/2 top-1/2"
+                      className="absolute left-0 z-10 bg-green-500/20 hover:bg-green-500/30 p-1 sm:p-2 rounded-full transition-all transform -translate-y-1/2 top-1/2"
                       aria-label="Previous technologies"
                     >
-                      <IoIosArrowBack className="text-blue-400 text-base sm:text-xl" />
+                      <IoIosArrowBack className="text-green-400 text-base sm:text-xl" />
                     </button>
                   )}
 
@@ -249,15 +243,16 @@ export const About = () => {
                       visibleTechnologies.map((tech, index) => (
                         <div
                           key={index}
-                          className="flex flex-col items-center justify-center bg-blue-500/10 p-3 sm:p-5 rounded-xl w-[80px] h-[80px] sm:w-[120px] sm:h-[120px] hover:bg-blue-500/20
-                          hover:shadow-[0_2px_8px_rgba(59,130,246,0.2)] transition-all transform hover:-translate-y-1"
+                          className="flex flex-col items-center justify-center bg-green-500/10 p-3 sm:p-5 rounded-xl w-[80px] h-[80px] sm:w-[120px] sm:h-[120px] 
+  hover:bg-green-500/20 hover:shadow-[0_2px_8px_rgba(59,130,246,0.2)] transition-all transform hover:-translate-y-1
+  border border-green-500/30" // <-- adicione esta linha
                         >
                           <div className="mb-2 sm:mb-3">{tech.icon}</div>
                           <span className="text-xs sm:text-sm text-gray-300 text-center">{tech.name}</span>
                         </div>
                       ))
                     ) : (
-                      <p className="text-gray-400 text-xs sm:text-sm">No technologies to display</p>
+                      <p className="text-gray-400 text-xs sm:text-sm">{t("No technologies to display")}</p>
                     )}
                   </div>
 
@@ -265,10 +260,10 @@ export const About = () => {
                   {technologies.length > itemsPerPage && (
                     <button
                       onClick={nextSlide}
-                      className="absolute right-0 z-10 bg-blue-500/20 hover:bg-blue-500/30 p-1 sm:p-2 rounded-full transition-all transform -translate-y-1/2 top-1/2"
+                      className="absolute right-0 z-10 bg-green-500/20 hover:bg-green-500/30 p-1 sm:p-2 rounded-full transition-all transform -translate-y-1/2 top-1/2"
                       aria-label="Next technologies"
                     >
-                      <IoIosArrowForward className="text-blue-400 text-base sm:text-xl" />
+                      <IoIosArrowForward className="text-green-400 text-base sm:text-xl" />
                     </button>
                   )}
                 </div>
@@ -280,7 +275,7 @@ export const About = () => {
                       <button
                         key={index}
                         onClick={() => setCurrentIndex(index)}
-                        className={`w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full transition-all ${currentIndex === index ? 'bg-blue-500 w-3 sm:w-4' : 'bg-gray-500'
+                        className={`w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full transition-all ${currentIndex === index ? 'bg-green-500 w-3 sm:w-4' : 'bg-gray-500'
                           }`}
                         aria-label={`Go to page ${index + 1}`}
                       />
@@ -292,33 +287,34 @@ export const About = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mt-6 sm:mt-8">
-            <div className="p-4 sm:p-6 rounded-xl border-white/10 border hover:-translate-y-1 transition-all">
-              <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4"> 🏫 Education </h3>
+            <div className="glass p-6 rounded-xl border border-purple-500 hover:-translate-y-1 hover:border-purple-300 transition-all">
+              <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4"> 🏫 {t("Education")} </h3>
+
 
               <div className="space-y-2 sm:space-y-3">
                 {educationData.map((education) => (
-                  <div key={education.id} className="border border-white/10 rounded-lg overflow-hidden">
+                  <div key={education.id} className="border border-green-500/30 rounded-lg overflow-hidden">
                     <button
                       onClick={() => toggleSection(education.id)}
-                      className="w-full p-2 sm:p-3 flex items-center justify-between bg-blue-500/10 hover:bg-blue-500/20 transition-all"
+                      className="w-full p-2 sm:p-3 flex items-center justify-between bg-green-500/10 hover:bg-green-500/20 transition-all"
                     >
                       <div className="flex items-center">
                         {education.icon}
-                        <span className="font-medium text-xs sm:text-sm">{education.title}</span>
+                        <span className="font-medium text-xs sm:text-sm">{t(education.title)}</span>
                       </div>
                       <FaChevronDown
-                        className={`text-blue-400 text-sm sm:text-base transition-transform duration-300 ${expandedSection === education.id ? 'transform rotate-180' : ''
+                        className={`text-green-400 text-sm sm:text-base transition-transform duration-300 ${expandedSection === education.id ? 'transform rotate-180' : ''
                           }`}
                       />
                     </button>
 
                     {expandedSection === education.id && (
-                      <div className="p-2 sm:p-3 bg-blue-500/5">
+                      <div className="p-2 sm:p-3 bg-green-500/5">
                         <div className="text-gray-300 text-xs sm:text-sm">
                           <h4 className="font-semibold text-sm sm:text-base">
-                            {education.institution} ({education.period})
+                            {t(education.institution)} ({t(education.period)})
                           </h4>
-                          <p>{education.description}</p>
+                          <p>{t("educationDescription")}</p>
                         </div>
                       </div>
                     )}
@@ -332,23 +328,23 @@ export const About = () => {
 
                 <div className="space-y-2 sm:space-y-3">
                   {certificatesData.map((section) => (
-                    <div key={section.id} className="border border-white/10 rounded-lg overflow-hidden">
+                    <div key={section.id} className="border border-green-500/30 rounded-lg overflow-hidden">
                       <button
                         onClick={() => toggleSection(section.id)}
-                        className="w-full p-2 sm:p-3 flex items-center justify-between bg-blue-500/10 hover:bg-blue-500/20 transition-all"
+                        className="w-full p-2 sm:p-3 flex items-center justify-between bg-green-500/10 hover:bg-green-500/20 transition-all"
                       >
                         <div className="flex items-center">
                           {section.icon}
                           <span className="font-medium text-xs sm:text-sm">{section.title}</span>
                         </div>
                         <FaChevronDown
-                          className={`text-blue-400 text-sm sm:text-base transition-transform duration-300 ${expandedSection === section.id ? 'transform rotate-180' : ''
+                          className={`text-green-400 text-sm sm:text-base transition-transform duration-300 ${expandedSection === section.id ? 'transform rotate-180' : ''
                             }`}
                         />
                       </button>
 
                       {expandedSection === section.id && (
-                        <div className="p-2 sm:p-3 bg-blue-500/5">
+                        <div className="p-2 sm:p-3 bg-green-500/5">
                           <ul className="space-y-1 sm:space-y-2">
                             {section.items.map((item, index) => (
                               <li key={index} className="flex items-center">
@@ -357,7 +353,7 @@ export const About = () => {
                                   href={item.file}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  className="text-gray-300 hover:text-blue-400 transition-colors text-xs sm:text-sm break-words"
+                                  className="text-gray-300 hover:text-green-400 transition-colors text-xs sm:text-sm break-words"
                                 >
                                   {item.name}
                                 </a>
@@ -371,35 +367,35 @@ export const About = () => {
                 </div>
               </div>
             </div>
-            <div className="p-4 sm:p-6 rounded-xl border-white/10 border hover:-translate-y-1 transition-all">
-              <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4"> 💼 Work Experience </h3>
+            <div className="glass p-6 rounded-xl border border-purple-500 hover:-translate-y-1 hover:border-purple-300 transition-all">
+              <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4"> 💼 {t("Work Experience")} </h3>
 
               <div className="space-y-2 sm:space-y-3">
                 {companiesData.map((company) => (
-                  <div key={company.id} className="border border-white/10 rounded-lg overflow-hidden">
+                  <div key={company.id} className="border border-green-500/30 rounded-lg overflow-hidden">
                     <button
                       /** 
                        * Handles expanding/collapsing a specific company section when clicked
                        * @param {number|string} company.id - Unique identifier for the company section to toggle
                        */
                       onClick={() => toggleSection(company.id)}
-                      className="w-full p-2 sm:p-3 flex items-center justify-between bg-blue-500/10 hover:bg-blue-500/20 transition-all"
+                      className="w-full p-2 sm:p-3 flex items-center justify-between bg-green-500/10 hover:bg-green-500/20 transition-all"
                     >
                       <div className="flex items-center">
                         {company.icon}
-                        <span className="font-medium text-xs sm:text-sm">{company.title}</span>
+                        <span className="font-medium text-xs sm:text-sm">{t(company.title)}</span>
                       </div>
                       <FaChevronDown
-                        className={`text-blue-400 text-sm sm:text-base transition-transform duration-300 ${expandedSection === company.id ? 'transform rotate-180' : ''
+                        className={`text-green-400 text-sm sm:text-base transition-transform duration-300 ${expandedSection === company.id ? 'transform rotate-180' : ''
                           }`}
                       />
                     </button>
 
                     {expandedSection === company.id && (
-                      <div className="p-2 sm:p-3 bg-blue-500/5">
+                      <div className="p-2 sm:p-3 bg-green-500/5">
                         <div className="text-gray-300 text-xs sm:text-sm">
                           <h4 className="font-semibold text-sm sm:text-base">
-                            {company.position} ({company.period})
+                            {t(company.position)} ({company.period})
                           </h4>
                           <div className="mt-1">{company.description}</div>
                         </div>
