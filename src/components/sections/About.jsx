@@ -49,8 +49,8 @@ export const About = () => {
       title: 'Courses',
       icon: <FaEnvelope className="text-yellow-400 text-lg sm:text-xl mr-2" />,
       items: [
-        { name: 'Full Stack Development JavaScript', file: '/portfolio/assets/PDFs/Courses/JavaScript_do_basico_ao_avancado_com_node.pdf' },
-        { name: 'Cisco Networking Basics', file: '/portfolio/assets/PDFs/Courses/Networking_Basics_Badge.pdf' },
+        { name: 'Full Stack Development JavaScript', file: '/assets/PDFs/Courses/JavaScript_do_basico_ao_avancado_com_node.pdf' },
+        { name: 'Cisco Networking Basics', file: '/assets/PDFs/Courses/Networking_Basics_Badge.pdf' },
       ]
     },
 
@@ -59,17 +59,17 @@ export const About = () => {
       title: 'Workshops',
       icon: <FaLaptopCode className="text-green-400 text-lg sm:text-xl mr-2" />,
       items: [
-        { name: 'Desenvolvimento Web Laravel 5', file: '/portfolio/assets/PDFs/Workshops/Oficina_de_Desenvolvimento_Web_Laravel_5.pdf' },
-        { name: 'Aplicações Web Frontend Interativas com React', file: '/portfolio/assets/PDFs/Workshops/Oficina2_Aplicações_Web_Front_End_Interativas_Com_React.pdf' },
-        { name: 'Backend Construindo Componentes Web Java EE', file: '/portfolio/assets/PDFs/Workshops/Oficina2_Backend_Construindo_Componentes_Web_Java_EE.pdf' },
-        { name: 'Manipulacao de Dados com Python', file: '/portfolio/assets/PDFs/Workshops/Oficina5_Manipulacao_de_Dados_com_Python.pdf' },
-        { name: 'Introducao ao esenvolvimento BackEnd com Python', file: '/portfolio/assets/PDFs/Workshops/Seminarios4_Introducao_ao_Desenvolvimento_BackEnd_com_Python.pdf' },
-        { name: 'Dev Start', file: '/portfolio/assets/PDFs/Workshops/Certificado_Dev_Start.pdf' },
-        { name: 'BIRT', file: '/portfolio/assets/PDFs/Workshops/Certificado_BIRT.pdf' },
-        { name: 'BPM ECM Intermediate', file: '/portfolio/assets/PDFs/Workshops/Certificado_BPM_ECM_Intermediate.pdf' },
-        { name: 'Fluig Express', file: '/portfolio/assets/PDFs/Workshops/Certificado_Fluig_Express.pdf' },
-        { name: 'Gestão de Portais', file: '/portfolio/assets/PDFs/Workshops/Certificado_Gestao_de_Portais.pdf' },
-        { name: 'Gestão de Processos Essentials', file: '/portfolio/assets/PDFs/Workshops/Certificado_Gestao_de_Processos_Essentials.pdf' }
+        { name: 'Desenvolvimento Web Laravel 5', file: '/assets/PDFs/Workshops/Oficina_de_Desenvolvimento_Web_Laravel_5.pdf' },
+        { name: 'Aplicações Web Frontend Interativas com React', file: '/assets/PDFs/Workshops/Oficina2_Aplicações_Web_Front_End_Interativas_Com_React.pdf' },
+        { name: 'Backend Construindo Componentes Web Java EE', file: '/assets/PDFs/Workshops/Oficina2_Backend_Construindo_Componentes_Web_Java_EE.pdf' },
+        { name: 'Manipulacao de Dados com Python', file: '/assets/PDFs/Workshops/Oficina5_Manipulacao_de_Dados_com_Python.pdf' },
+        { name: 'Introducao ao esenvolvimento BackEnd com Python', file: '/assets/PDFs/Workshops/Seminarios4_Introducao_ao_Desenvolvimento_BackEnd_com_Python.pdf' },
+        { name: 'Dev Start', file: '/assets/PDFs/Workshops/Certificado_Dev_Start.pdf' },
+        { name: 'BIRT', file: '/assets/PDFs/Workshops/Certificado_BIRT.pdf' },
+        { name: 'BPM ECM Intermediate', file: '/assets/PDFs/Workshops/Certificado_BPM_ECM_Intermediate.pdf' },
+        { name: 'Fluig Express', file: '/assets/PDFs/Workshops/Certificado_Fluig_Express.pdf' },
+        { name: 'Gestão de Portais', file: '/assets/PDFs/Workshops/Certificado_Gestao_de_Portais.pdf' },
+        { name: 'Gestão de Processos Essentials', file: '/assets/PDFs/Workshops/Certificado_Gestao_de_Processos_Essentials.pdf' }
 
       ]
     }
