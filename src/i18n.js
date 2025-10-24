@@ -111,7 +111,7 @@ i18n
           "TelemidiaSupport": "Suporte técnico e resolução de problemas de rede",
           "TelemidiaInspection": "Inspeção de rede e identificação de falhas físicas",
           "Featured Projects": "Projetos em Destaque",
-          "Technologies Used:": "Tecnologias Utilizadas:",
+          "Technologies Used": "Tecnologias Utilizadas:",
           "View Project →": "Ver Projeto →",
           "Account Creation": "Criação de Conta",
           "Create a New Event": "Criar Novo Evento",
