@@ -1,27 +1,45 @@
-$deployPath = "C:\Users\Carlos\Desktop\ProjetosVsCode\CarlosWalace.github.io"
-$projectPath = "C:\Users\Carlos\Desktop\ProjetosVsCode\Portfolio"
+# CAMINHOS CORRIGIDOS - baseado no local real do script
+$deployPath = "C:\Users\Carlos\OneDrive\Área de Trabalho\CarlosWalace.github.io"
+$projectPath = "C:\Users\Carlos\OneDrive\Área de Trabalho\Portfolio"
 $distPath = "$projectPath\dist"
 
 try {
-    Write-Host "=== DEPLOY PARA GITHUB PAGES PROJECT SITE ===" -ForegroundColor Green
+    Write-Host "=== DEPLOY PARA GITHUB PAGES ===" -ForegroundColor Green
     
-    # 1. Verificar configuração do Vite
-    Write-Host "1. Verificando configuração..." -ForegroundColor Yellow
-    Set-Location -Path $projectPath
+    # 1. Verificar se as pastas existem
+    Write-Host "1. Verificando pastas..." -ForegroundColor Yellow
     
-    $viteConfig = Get-Content "vite.config.js" -Raw
-    if ($viteConfig -notmatch 'base: "/Portfolio/"') {
-        Write-Host "❌ AVISO: base não está como '/Portfolio/' no vite.config.js" -ForegroundColor Red
-        Write-Host "   Isso pode causar erros 404!" -ForegroundColor Yellow
+    if (-not (Test-Path $projectPath)) {
+        throw "Pasta do projeto não encontrada: $projectPath"
     }
     
-    # 2. Instalar dependências se necessário
+    if (-not (Test-Path $deployPath)) {
+        throw "Pasta de deploy não encontrada: $deployPath - Clone o repositório primeiro!"
+    }
+    
+    Write-Host "✅ Pastas verificadas" -ForegroundColor Green
+    
+    # 2. Navegar para o projeto
+    Set-Location -Path $projectPath
+    
+    # 3. Verificar configuração do Vite
+    if (Test-Path "vite.config.js") {
+        $viteConfig = Get-Content "vite.config.js" -Raw
+        if ($viteConfig -match 'base: "/Portfolio/"') {
+            Write-Host "✅ Vite config CORRETO" -ForegroundColor Green
+        } else {
+            Write-Host "❌ AVISO: base não está como '/Portfolio/' no vite.config.js" -ForegroundColor Yellow
+            Write-Host "   Isso pode causar erros 404!" -ForegroundColor Yellow
+        }
+    }
+    
+    # 4. Instalar dependências se necessário
     if (-not (Test-Path "node_modules")) {
         Write-Host "📦 Instalando dependências..." -ForegroundColor Yellow
         npm install
     }
     
-    # 3. Build do projeto
+    # 5. Build do projeto
     Write-Host "2. Executando build..." -ForegroundColor Yellow
     npm run build
     
@@ -31,27 +49,27 @@ try {
     
     Write-Host "✅ Build bem-sucedido!" -ForegroundColor Green
     
-    # 4. Verificar conteúdo do build
+    # 6. Verificar conteúdo do build
     Write-Host "Conteúdo da pasta dist:" -ForegroundColor Cyan
-    Get-ChildItem -Path $distPath -Recurse | ForEach-Object { 
+    Get-ChildItem -Path $distPath | ForEach-Object { 
         Write-Host "  📁 $($_.Name)" 
     }
     
-    # 5. Limpar deploy anterior
+    # 7. Limpar deploy anterior
     Write-Host "3. Preparando deploy..." -ForegroundColor Yellow
     if (Test-Path $deployPath) {
         Get-ChildItem -Path $deployPath -Force -Exclude ".git" | Remove-Item -Recurse -Force
     }
     
-    # 6. Copiar arquivos
+    # 8. Copiar arquivos
     Write-Host "4. Copiando arquivos..." -ForegroundColor Yellow
     Copy-Item -Path "$distPath\*" -Destination $deployPath -Recurse -Force
     
-    # 7. Deploy no Git
+    # 9. Deploy no Git
     Write-Host "5. Deploy no GitHub..." -ForegroundColor Yellow
     Set-Location -Path $deployPath
     git add .
-    git commit -m "deploy: ajuste base URL para /Portfolio/"
+    git commit -m "deploy: $(Get-Date -Format 'dd/MM/yyyy HH:mm')"
     git push
     
     Write-Host "`n🎉 DEPLOY CONCLUÍDO!" -ForegroundColor Green
